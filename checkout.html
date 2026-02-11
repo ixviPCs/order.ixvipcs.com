@@ -1,22 +1,63 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Buy cool new product</title>
+    <title>Buy Your PC</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://js.stripe.com/clover/stripe.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
   </head>
   <body>
     <section>
+      <h2>Select your PC</h2>
+
       <div class="product">
-        <img src="https://i.imgur.com/EHyR2nP.png" alt="The cover of Stubborn Attachments" />
-        <div class="description">
-          <h3>Stubborn Attachments</h3>
-          <h5>$20.00</h5>
-        </div>
+        <input type="radio" name="product" value="price_1SyJjRBN2crMwDxtIH0TFGdh" id="basic">
+        <label for="basic">
+          <strong>Basic PC</strong> - $1000
+          <br>
+          <img src="https://i.imgur.com/EHyR2nP.png" alt="Basic PC" width="200">
+        </label>
       </div>
-      <form action="/create-checkout-session" method="POST">
-        <button type="submit" id="checkout-button">Checkout</button>
-      </form>
+
+      <div class="product">
+        <input type="radio" name="product" value="price_1SyJm1BN2crMwDxt1kbXEAzD" id="pro">
+        <label for="pro">
+          <strong>Pro PC</strong> - $2000
+          <br>
+          <img src="https://i.imgur.com/EHyR2nP.png" alt="Pro PC" width="200">
+        </label>
+      </div>
+
+      <div class="product">
+        <input type="radio" name="product" value="price_1SyJpjBN2crMwDxtjygiwIhD" id="ultra">
+        <label for="ultra">
+          <strong>Ultra PC</strong> - $3000
+          <br>
+          <img src="https://i.imgur.com/EHyR2nP.png" alt="Ultra PC" width="200">
+        </label>
+      </div>
+
+      <button id="checkout-button">Checkout</button>
     </section>
+
+    <script>
+      document.getElementById('checkout-button').addEventListener('click', async () => {
+        const selected = document.querySelector('input[name="product"]:checked');
+        if (!selected) return alert("Please select a product!");
+
+        try {
+          const res = await fetch('https://fma6etfx4sldpkxdizopkass640jmzvq.lambda-url.us-east-1.on.aws/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ priceId: selected.value })
+          });
+
+          const data = await res.json();
+          window.location = data.url; // redirect to Stripe Checkout
+        } catch (err) {
+          console.error(err);
+          alert("Failed to create checkout session.");
+        }
+      });
+    </script>
   </body>
 </html>
