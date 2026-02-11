@@ -1,0 +1,21 @@
+<h2>Select your PC</h2>
+<input type="radio" name="product" value="price_1SyJjRBN2crMwDxtIH0TFGdh"> Basic PC<br>
+<input type="radio" name="product" value="price_1SyJm1BN2crMwDxt1kbXEAzD"> Pro PC<br>
+<input type="radio" name="product" value="price_1SyJpjBN2crMwDxtjygiwIhD"> Ultra PC<br>
+<button id="checkout">Checkout</button>
+
+<script>
+document.getElementById('checkout').addEventListener('click', async () => {
+  const selected = document.querySelector('input[name="product"]:checked');
+  if (!selected) return alert("Select a product!");
+
+  const res = await fetch('/create-checkout-session', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ priceId: selected.value })
+  });
+
+  const data = await res.json();
+  window.location = data.url; // redirect to Stripe Checkout
+});
+</script>
