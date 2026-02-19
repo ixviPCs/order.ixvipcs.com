@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Buy cool new product</title>
+    <title>Choose Your PC Tier</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://js.stripe.com/clover/stripe.js"></script>
   </head>
   <body>
-    <section>
-      <div class="product">
-        <img src="https://i.imgur.com/EHyR2nP.png" alt="The cover of Stubborn Attachments" />
-        <div class="description">
-          <h3>Stubborn Attachments</h3>
-          <h5>$20.00</h5>
-        </div>
-      </div>
-      <form action="https://kbuwwuc7rkeoiy6alby4dlozv40popar.lambda-url.us-east-1.on.aws/" method="POST">
-        <button type="submit" id="checkout-button">Checkout</button>
+    <section style="text-align:center; margin-top:50px;">
+
+      <h1>Choose Your PC Tier</h1>
+
+      <!-- Basic -->
+      <form action="https://kbuwwuc7rkeoiy6alby4dlozv40popar.lambda-url.us-east-1.on.aws/" method="POST" style="margin:20px;">
+        <input type="hidden" name="priceId" value="price_1SzLUFB2XNuxbxPuJYnYkM0y">
+        <button type="submit">Basic PC</button>
       </form>
+
+      <!-- Pro -->
+      <form action="https://kbuwwuc7rkeoiy6alby4dlozv40popar.lambda-url.us-east-1.on.aws/" method="POST" style="margin:20px;">
+        <input type="hidden" name="priceId" value="price_1SzLZLB2XNuxbxPuMgEVQtwH">
+        <button type="submit">Pro PC</button>
+      </form>
+
+      <!-- Ultra -->
+      <form action="https://kbuwwuc7rkeoiy6alby4dlozv40popar.lambda-url.us-east-1.on.aws/" method="POST" style="margin:20px;">
+        <input type="hidden" name="priceId" value="price_1SzLcMB2XNuxbxPuV9k2wx4W">
+        <button type="submit">Ultra PC</button>
+      </form>
+
     </section>
   </body>
 </html>
