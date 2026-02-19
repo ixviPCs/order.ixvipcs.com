@@ -1,24 +1,88 @@
-<section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Choose Your PC Tier</title>
+
+  <style>
+    body {
+      background-color: #000000;
+      color: #00BFFF;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .button {
+      background-color: #FF0000;
+      color: #FFFFFF;
+      border: none;
+      padding: 14px 28px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 8px;
+      margin: 10px;
+      text-decoration: none;
+      display: inline-block;
+      transition: background-color 0.3s ease, transform 0.2s ease, border 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #000000;
+      border: 2px solid #FF0000;
+      transform: scale(1.05);
+    }
+
+    .button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
   <h1>Choose Your PC Tier</h1>
 
-  <div>
-    <h2>Basic</h2>
-    <form action="https://kbuwwuc7rkeoiy6alby4dlozv40popar.lambda-url.us-east-1.on.aws/" method="POST">
-      <button type="submit">Buy Basic</button>
-    </form>
-  </div>
+  <button class="button buy"
+    data-url="https://kbuwwuc7rkeoiy6alby4dlozv40popar.lambda-url.us-east-1.on.aws/">
+    Basic
+  </button>
 
-  <div>
-    <h2>Pro</h2>
-    <form action="https://tzi3uwdousq55sf7bvkzzypu3q0xrubs.lambda-url.us-east-1.on.aws/" method="POST">
-      <button type="submit">Buy Pro</button>
-    </form>
-  </div>
+  <button class="button buy"
+    data-url="https://tzi3uwdousq55sf7bvkzzypu3q0xrubs.lambda-url.us-east-1.on.aws/">
+    Pro
+  </button>
 
-  <div>
-    <h2>Ultra</h2>
-    <form action="https://qznaaxgo5mhsvucwxeiol5p2x40mesxg.lambda-url.us-east-1.on.aws/" method="POST">
-      <button type="submit">Buy Ultra</button>
-    </form>
-  </div>
-</section>
+  <button class="button buy"
+    data-url="https://qznaaxgo5mhsvucwxeiol5p2x40mesxg.lambda-url.us-east-1.on.aws/">
+    Ultra
+  </button>
+
+  <script>
+    const buttons = document.querySelectorAll(".buy");
+
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+
+        // stop spam
+        buttons.forEach(b => b.disabled = true);
+
+        // instantly go to loading page with target URL
+        window.location.href = "/loading.html?target=" + encodeURIComponent(button.dataset.url);
+      });
+    });
+  </script>
+
+</body>
+</html>
