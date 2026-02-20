@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loading...</title>
+
+  <style>
+    body {
+      background-color: #000000;
+      color: #00BFFF;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 6px solid #222;
+      border-top: 6px solid #FF0000;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Loading...</h1>
+  <div class="spinner"></div>
+
+  <form id="autoForm" method="POST"></form>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const target = params.get("target");
+
+    if (target) {
+      const form = document.getElementById("autoForm");
+      form.action = target;
+      form.submit();
+    }
+  </script>
+
+</body>
+</html>
