@@ -67,13 +67,13 @@
   container.className = 'navbar-container';
   container.innerHTML = `
     <div class="navbar">
-      <a href="ixvipcs.com" class="nav-logo-link">
+      <a href="/ixvipcs.com" class="nav-logo-link">
         <img src="/favicon.ico" class="nav-logo" alt="Home" />
       </a>
-      <a href="ixvipcs.com/Pre-Built-PCs" class="nav-link">Browse PCs</a>
-      <a href="order.ixvipcs.com" class="nav-link">Order</a>
-      <a href="ixvipcs.com/About-Us" class="nav-link">About Us</a>
-      <a href="ixvipcs.com/More" class="nav-link">More</a>
+      <a href="/ixvipcs.com/Pre-Built-PCs" class="nav-link">Browse PCs</a>
+      <a href="/order.ixvipcs.com" class="nav-link">Order</a>
+      <a href="/ixvipcs.com/About-Us" class="nav-link">About Us</a>
+      <a href="/ixvipcs.com/More" class="nav-link">More</a>
     </div>
   `;
   document.body.prepend(container);
